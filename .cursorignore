@@ -1,0 +1,13 @@
+# Ignore data directory containing user archives
+data/
+
+# Ignore build output
+dist/
+dist-ssr/
+
+# Ignore dependencies
+node_modules/
+
+# Ignore logs
+*.log
+

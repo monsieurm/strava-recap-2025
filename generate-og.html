@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Générateur OpenGraph - Strava Recap 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold mb-4">Générateur d'Image OpenGraph</h1>
+        <p class="text-gray-600">
+          Image de partage pour les réseaux sociaux (1200x630px)
+        </p>
+      </div>
+
+      <!-- Preview -->
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="flex justify-center">
+          <div class="scale-75 origin-center border-2 border-gray-300">
+            <div
+              id="og-image"
+              class="w-[1200px] h-[630px] bg-linear-to-br from-orange-500 to-red-600 text-white p-16 flex flex-col justify-between">
+              <!-- Header -->
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <!-- Bike Icon (simplified) -->
+                  <div class="w-20 h-20 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="80"
+                      height="80"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <circle cx="18.5" cy="17.5" r="3.5" />
+                      <circle cx="5.5" cy="17.5" r="3.5" />
+                      <circle cx="15" cy="5" r="1" />
+                      <path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h1 class="text-7xl font-bold">Strava Recap 2025</h1>
+                    <p class="text-3xl text-white/90 mt-2">Votre année à vélo</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="space-y-4">
+                <p class="text-4xl font-semibold">
+                  Générez votre récapitulatif annuel Strava
+                </p>
+                <p class="text-2xl text-white/90">
+                  📊 Statistiques complètes • 📱 Export multi-formats • 🔒 100% privé
+                </p>
+              </div>
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between">
+                <p class="text-2xl font-bold">strava-recap-2025.matthieurenaut.com</p>
+                <div class="text-xl text-white/80">Gratuit et open source</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex justify-center gap-4">
+        <button
+          id="download-btn"
+          class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
+          Télécharger l'image OG (1200x630)
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('download-btn').addEventListener('click', async () => {
+        const button = document.getElementById('download-btn');
+        button.textContent = 'Génération...';
+        button.disabled = true;
+
+        try {
+          const element = document.getElementById('og-image');
+          const dataUrl = await htmlToImage.toPng(element, {
+            quality: 1,
+            pixelRatio: 1,
+            backgroundColor: '#f97316',
+            cacheBust: true,
+          });
+
+          // Download the image
+          const link = document.createElement('a');
+          link.download = 'og-image.png';
+          link.href = dataUrl;
+          link.click();
+
+          button.textContent = '✅ Image téléchargée !';
+          setTimeout(() => {
+            button.textContent = "Télécharger l'image OG (1200x630)";
+            button.disabled = false;
+          }, 2000);
+        } catch (err) {
+          console.error('Error generating OG image:', err);
+          button.textContent = '❌ Erreur';
+          setTimeout(() => {
+            button.textContent = "Télécharger l'image OG (1200x630)";
+            button.disabled = false;
+          }, 2000);
+        }
+      });
+    </script>
+  </body>
+</html>
