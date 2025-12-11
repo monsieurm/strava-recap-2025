@@ -133,6 +133,7 @@ export function filterActivities(
     'Ride',           // English
     'VirtualRide',    // Virtual cycling
     'EBikeRide',      // E-bike
+    'E-Bike Ride',    // English variant
     'Cyclisme',       // French variant
     'Cycling',        // English variant
     'Biking',         // English variant
