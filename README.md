@@ -4,6 +4,9 @@ Ce projet est entièrement vibecodé, c'est un exercice que je me suis imposé p
 
 Le site est visible ici : https://strava-recap-2025.matthieurenaut.com/
 
+J'en parle ici : https://www.linkedin.com/feed/update/urn:li:activity:7404795859378384896/
+
+
 
 # Strava Recap 2025 🚴‍♂️
 
